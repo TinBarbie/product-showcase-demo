@@ -48,7 +48,7 @@ const Products = () => {
   useEffect(() => {
     if (!isLoading) {
       setIsLoading(true);
-      setProductList([]);
+      setProductList(undefined);
       setOptions(`/search?limit=${PRODUCT_PER_PAGE}&q=${debouncedValue}`);
       setPage(1)
     }
@@ -76,14 +76,14 @@ const Products = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isLoading]);
-
+  
   return (
     <div className="flex flex-col items-center justify-center gap-10">
       <Input onSearch={(searchValue) => setSearchValue(searchValue)} />
 
       <div className="flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center gap-10">
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full min-w-[800px]">
             <h3 className="text-red-600 text-[32px] pb-5">
               List of Products:
             </h3>
